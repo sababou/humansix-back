@@ -1,6 +1,6 @@
 1 - Il faut exécuter composer install sur le code téléchargé
 
-2 - Il faut modifier le fichier .env.local.php avec les bons accès de base de données <DB_USERNAME>, <DB_PASSWORD>, <DB_HOST>, <DB_NAME>
+2 - Il faut modifier le fichier .env avec les bons accès de base de données <DB_USERNAME>, <DB_PASSWORD>, <DB_HOST>, <DB_NAME>
 
 3 - Il faut exécuter via bin/console : doctrine:database:create puis make:migration puis doctrine:migrations:migrate afin de créer la base de données
 
