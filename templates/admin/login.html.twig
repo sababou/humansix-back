@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-6 offset-md-1 offset-lg-3">
+
+      <h1 class="text-center my-5">
+        Connexion
+      </h1>
+
+      <hr>
+
+      <form action="{{path("login")}}" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Identifiant</label>
+          <input name="username" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+          <input name="password" type="password" class="form-control">
+        </div>
+
+        <div class="text-center my-4">
+          <button type="submit" class="btn btn-outline-dark py-3 px-5">Se connecter</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

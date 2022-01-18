@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% import "admin/macro/order.html.twig" as orderMacro %}
+
+{% block title %}Liste des commandes{% endblock %}
+
+{% block body %}
+
+{% include "admin/include/orderModal.html.twig" %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center my-5">
+        Liste des commandes
+      </h1>
+      <hr>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<section class="container">
+  <div class="row mb-4">
+    <div class="col-12 col-lg-2">
+      <label for="" class="form-label">Trier par date</label>
+    </div>
+    <div class="col col-lg-6">
+      <select class="form-select filter_date" aria-label="Default select example">
+        <option {% if orderBy != "DESC" %}selected{% endif %} data-order-by="ASC">De la plus ancienne</option>
+        <option {% if orderBy == "DESC" %}selected{% endif %} data-order-by="DESC">De la plus récente</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+
+      {% for order in orders %}
+
+        {{ orderMacro.render(order) }}
+
+      {% else %}
+
+        <p class="lead text-center my-5">
+          Il n'y a aucune commande pour l'instant.
+        </p>
+
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+  <script>
+    $('body').on('change', '.filter_date', function(){
+      var orderBy = $(this).find('option:selected').attr('data-order-by');
+
+      document.location.href = "/?order_by="+orderBy;
+
+    })
+  </script>
+
+{% endblock %}

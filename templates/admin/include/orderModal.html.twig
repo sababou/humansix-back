@@ -1,0 +1,42 @@
+<!-- Modal -->
+<div class="modal fade modal" id="orderModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter commande</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form method="POST" action="{{path("admin_add_order")}}">
+        <div class="modal-body">
+
+          <div class="mb-3">
+            <label class="form-label">Nom Client</label>
+            <input type="text" class="form-control" name="customer_lastname">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Prénom Client</label>
+            <input type="text" class="form-control" name="customer_firstname">
+          </div>
+
+          <hr>
+
+          {% for product in products %}
+
+          <div class="mb-3">
+            <label class="form-label">Quantité {{product.name}}</label>
+            <input type="number" value="0" min="0" class="form-control" name="quantity_product_{{product.sku}}">
+          </div>
+
+          {% endfor %}
+
+
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="submit" class="btn btn-dark px-4 py-3">Enregistrer commande</button>
+          <button type="button" class="btn btn-outline-secondary px-4 py-3" data-bs-dismiss="modal">Annuler</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
